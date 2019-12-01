@@ -22,48 +22,57 @@
 				<img src="{% static 'images/registration-form-8.jpg' %}" width="100" height="100">
 			</div>
 			<div class="form-inner">
-        <form method="POST" action = "{% url 'Ninhos:index' %}">
+        <form method="POST">
 						{% csrf_token %}
 					<div class="form-header">
 						<h3>Crear tu cuenta</h3>
 						<img src="{% static 'images/sign-up.png' %}" alt="" class="sign-up-icon">
 					</div>
 					<div class="form-group">
+						<label for="">Primer Nombre:</label>
+						<input name="P_nombre" type="text" class="form-control" data-validation="length alphanumeric" data-validation-length="3-12">
+					</div>
+          <div class="form-group">
+						<label for="">Segundo Nombre:</label>
+						<input name="S_nombre" type="text" class="form-control">
+					</div>
+          <div class="form-group">
+						<label for="">Apellido Paterno:</label>
+						<input name="P_Apellido" type="text" class="form-control" data-validation="length alphanumeric" data-validation-length="3-12">
+					</div>
+          <div class="form-group">
+						<label for="">Apellido Materno:</label>
+						<input name="S_Apellido" type="text" class="form-control">
+					</div>
+          <div class="form-group">
+						<label for="">Sexo:</label>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" value = "M" id="Masculino" name="sexo">
+              <label class="custom-control-label" for="Masculino">Masculino</label>
+            </div>
+
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" value = "F" id="Femenino" name="sexo">
+              <label class="custom-control-label" for="Femenino">Femenino</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="">Fecha de Nacimiento (mes / día / año):</label>
+            <input name="Nacimiento" type="date" class="form-control" required>
+          </div>
+
+					<div class="form-group">
 						<label for="">Nombre de Usuario:</label>
-						<input type="text" class="form-control" data-validation="length alphanumeric" data-validation-length="3-12">
+						<input name="username" type="text" class="form-control" data-validation="length alphanumeric" data-validation-length="3-12">
 					</div>
-					<div class="form-group">
-						<label for="">Nombres:</label>
-						<input type="text" class="form-control" data-validation="length alphanumeric" data-validation-length="3-12">
-					</div>
-					<div class="form-group">
-						<label for="">Apellidos:</label>
-						<input type="text" class="form-control" data-validation="length alphanumeric" data-validation-length="3-12">
-					</div>
-					<div class="form-group">
-						<label for="">Correo electrónico:</label>
-						<input type="text" class="form-control" data-validation="email">
-					</div>
-					<div class="form-group" >
+				  <div class="form-group" >
 						<label for="">Contraseña:</label>
-						<input type="password" class="form-control" data-validation="length" data-validation-length="min8">
+						<input name="password" type="password" class="form-control" data-validation="length alphanumeric" data-validation-length="min8">
 					</div>
+
 					<button>Crear mi cuenta</button>
-					<div class="socials">
-						<p>Regístrarse con otro medio:</p>
-						<a href="" class="socials-icon">
-							<i class="zmdi zmdi-facebook"></i>
-						</a>
-						<a href="" class="socials-icon">
-							<i class="zmdi zmdi-instagram"></i>
-						</a>
-						<a href="" class="socials-icon">
-							<i class="zmdi zmdi-twitter"></i>
-						</a>
-						<a href="" class="socials-icon">
-							<i class="zmdi zmdi-tumblr"></i>
-						</a>
-					</div>
+
 				</form>
 			</div>
 
@@ -71,6 +80,5 @@
 		<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
 		<script src="{% static 'js/jquery.form-validator.min.js' %}"></script>
 		<script src="{% static 'js/main.js' %}"></script>
-
 </body>
 </html>

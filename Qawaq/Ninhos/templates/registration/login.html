@@ -30,19 +30,18 @@
                 <h1>Iniciar Session</h1>
             </div>
 
-            <form method="POST" class="login-form" action="">
+            <form method="POST" class="login-form">
 								{% csrf_token %}
                 <div class="control-group">
-                <input type="text" class="login-field" value="" placeholder="usuario" id="login-name">
+                <input name = "username" type="text" class="login-field" value="" placeholder="usuario" id="login-name">
                 <label class="login-field-icon fui-user" for="login-name"></label>
                 </div>
 
                 <div class="control-group">
-                <input type="password" class="login-field" value="" placeholder="contraseña" id="login-pass">
+                <input name = "password" type="password" class="login-field" value="" placeholder="contraseña" id="login-pass">
                 <label class="login-field-icon fui-lock" for="login-pass"></label>
                 </div>
-
-                <a class="btn btn-primary btn-large btn-block" href="#">Ingresar</a>
+								<button class="btn btn-primary btn-large btn-block">Ingresar</button>
                 <a class="login-link" href="#">Olvidaste tu contraseña?</a>
                 <a class="registrarse-link" href="{% url 'Ninhos:registro' %}">Registrarse</a>
             </form>

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -15,8 +16,7 @@ class Ninho(models.Model):
 
 
 class Usuario(models.Model):
-    username = models.CharField(max_length=25)
-    password = models.CharField(max_length=25)
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
     nivel_lectura = models.DecimalField(max_digits = 5, decimal_places = 2)
     ninho = models.OneToOneField(Ninho,on_delete=models.PROTECT)
 
@@ -68,4 +68,3 @@ class Minigame(models.Model):
     Solucion = models.FilePathField()
     Evaluacion = models.OneToOneField(Evaluacion,on_delete=models.PROTECT)
 """
-
