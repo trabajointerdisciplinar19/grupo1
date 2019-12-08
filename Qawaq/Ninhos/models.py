@@ -23,9 +23,9 @@ class Usuario(models.Model):
 
 class Material_Aprendizaje(models.Model):
     titulo = models.CharField(max_length = 50)
-    descripcion = models.CharField(max_length = 60)
+    descripcion = models.TextField()
     dificultad = models.PositiveIntegerField()
-    imagen = models.FilePathField()
+    imagen = models.ImageField(upload_to="Ninhos/static/Imagenes_BD/")
     tema = models.CharField(max_length = 30)
 
 

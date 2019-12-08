@@ -1,0 +1,37 @@
+{% load static %}
+<!doctype html>
+<html lang="en-Us">
+<head>
+
+<meta charset="utf-8">
+
+<title>Login</title>
+
+<link rel='stylesheet' type="text/css" href="{% static 'css/logincss.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body background="{% static 'images/fondo.jpg' %}">
+	<header>
+      <div class="container">
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand text-white" href="{% url 'Ninhos:index' %}">Qawaq</a>
+              </div>
+            </div>
+        </nav>
+      </div>
+  </header>
+    <div class="login">
+        <div class="login-screen">
+            <div class="app-title">
+                <h1>Hasta la proxima</h1>
+            </div>
+            <a class="navbar-brand text-white" href="{% url 'login'%}">Click aqui para volver a logearte</a>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -3,11 +3,25 @@ from django.http import HttpResponse
 from django.urls import reverse
 from django.contrib.auth import authenticate, login
 from .utils import *
+from django.contrib.auth.decorators import login_required, permission_required
 
 
 def index(request):
     if request.user.is_authenticated:
-        return redirect(reverse('Ninhos:login'));
+        values = {}
+        values['username'] = request.user.get_username()
+        libros = Material_Aprendizaje.objects.all()[:4]
+        sufijo_1 = "titulo"
+        sufijo_2 = "imagen"
+        sufijo_3 = "descripcion"
+        sufijo_4 = "id"
+        for i in range(len(libros)):
+            values[sufijo_1+str(i)] = libros[i].titulo
+            values[sufijo_4+str(i)] = libros[i].id
+            valor = (str(libros[i].imagen)).split('/')
+            values[sufijo_2+str(i)] = valor[1]+'/'+valor[2]+'/'+valor[3]
+            values[sufijo_3+str(i)] = libros[i].descripcion
+        return render(request,'PaginaIniciada/index.html',values)
     else:
         return render(request,'TI-PagPrinc/index.html')
 
@@ -29,14 +43,22 @@ def registro(request):
         return render(request, 'TI2-Registro/Registro.html')
 
 def login(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(user)
+        user = authenticate(request,username = username,password = password)
+        if user:
+            login(request,user)
             return render(request,'PaginaIniciada/index.html')
         else:
             return render(request,'registration/login.html')
     else:
         return render(request,'registration/login.html')
+
+def logout(request):
+    logout(request)
+    return(redirect(reverse('Ninhos:login')))
+
+@login_required
+def cuento(request, id):
+    pass

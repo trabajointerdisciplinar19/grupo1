@@ -33,5 +33,6 @@ def agregar_webuser(F_nombre, S_nombre,P_Apellido,S_Apellido,username):
     dato = Usuario()
     dato.user = User.objects.get(username=username)
     dato.nivel_lectura = 0.00
-    dato.ninho = Ninho.objects.get(P_Nombre=F_nombre, S_nombre=S_nombre, Apellido_P=P_Apellido, Apellido_M=S_Apellido)
+    #Error era S_Nombre no S_nombre
+    dato.ninho = Ninho.objects.get(P_Nombre=F_nombre, S_Nombre=S_nombre, Apellido_P=P_Apellido, Apellido_M=S_Apellido)
     dato.save()
