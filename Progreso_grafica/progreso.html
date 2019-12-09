@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta  http-equiv="X-UA-Compatible" content="IE-edge">
+
+	<title>Tu progreso</title>
+	<meta name="viewport" content="width-device-width, initial-scale=1.0">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+</head>
+<body>
+	<canvas id="progreso" width="1000px" height="400px"></canvas>
+</body>
+<script>
+	let mi_canvas=document.getElementById("progreso").getContext("2d");
+
+	var chart = new Chart(mi_canvas,{
+		type:"line",
+		data:{
+			labels:["Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"],
+			datasets:[
+			{
+
+				label:"Tu progreso semanal",
+				
+				borderColor:"rgb(240,128,128)",
+				borderCapStyle: 'butt',
+				borderDash: [],
+				borderDashOffset:0.0,
+				borderJoinStyle: 'miter',
+				pointBorderColor: "rgb(255,0,0)",
+				pointBackgroundColor: "rgb(255,0,0)",
+				pointBorderWifth: 20,
+				pointHoverRadius:20,
+				pointRadius: 10,
+				pointHitRadius: 10,
+				backgroundColor:"rgb(255,160,122)",
+				data:[0,12,15,5,2]
+			}
+			]
+		}
+	})
+</script>
+</html>
