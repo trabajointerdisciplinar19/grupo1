@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta  http-equiv="X-UA-Compatible" content="IE-edge">
+
+	<title>Tu progreso</title>
+	<meta name="viewport" content="width-device-width, initial-scale=1.0">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<canvas id="progreso" width="1000px" height="400px"></canvas>
+</body>
+<script>
+  function drawLineChart() {
+
+    // Add a helper to format timestamp data
+    Date.prototype.formatMMDDYYYY = function() {
+        return (this.getMonth() + 1) +
+        "/" +  this.getDate() +
+        "/" +  this.getFullYear();
+    }
+
+    var jsonData = $.ajax({
+      url: 'http://d.microbuilder.io:8080/test/temp',
+      dataType: 'json',
+    }).done(function (results) {
+
+      // Split timestamp and data into separate arrays
+      var labels = [], data=[];
+      results["packets"].forEach(function(packet) {
+        labels.push(new Date(packet.timestamp).formatMMDDYYYY());
+        data.push(parseFloat(packet.payloadString));
+      });
+
+      // Create the chart.js data structure using 'labels' and 'data'
+      var tempData = {
+        labels : labels,
+        datasets : [{
+            fillColor             : "rgba(151,187,205,0.2)",
+            strokeColor           : "rgba(151,187,205,1)",
+            pointColor            : "rgba(151,187,205,1)",
+            pointStrokeColor      : "#fff",
+            pointHighlightFill    : "#fff",
+            pointHighlightStroke  : "rgba(151,187,205,1)",
+            data                  : data
+        }]
+      };
+
+      // Get the context of the canvas element we want to select
+      var ctx = document.getElementById("progreso").getContext("2d");
+
+      // Instantiate a new chart
+      var progreso = new Chart(ctx).Line(tempData, {
+        //bezierCurve: false
+      });
+    });
+  }
+
+  drawLineChart();
+</script>
+</html>
