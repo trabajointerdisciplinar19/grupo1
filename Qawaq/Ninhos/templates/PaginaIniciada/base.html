@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  {% include "PaginaIniciada/header.html" %}
+  <body>
+    {% include "PaginaIniciada/cabecera.html" %}
+
+    {% block centro %}
+
+    {% endblock centro %}
+
+
+
+    {% include "PaginaIniciada/footer.html" %}
+    <!-- Latest jQuery form server -->
+	  <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <!-- Bootstrap JS form CDN -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- jQuery sticky menu -->
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.sticky.js' %}"></script>
+    <!-- jQuery easing -->
+    <script src="{% static 'js/jquery.easing.1.3.min.js' %}"></script>
+    <!-- Main Script -->
+    <script src="{% static 'js/main_pi.js' %}"></script>
+    {% block scrts %}
+
+    {% endblock scrts %}
+  </body>
+</html>

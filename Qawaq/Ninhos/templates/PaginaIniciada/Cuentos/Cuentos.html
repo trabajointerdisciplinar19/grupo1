@@ -1,0 +1,25 @@
+{% extends "../base.html" %}
+{% block centro %}
+<div class="container">
+  <div class="row">
+        <div class="col-md-7 justify-content-center">
+          <h4 class="text-center"><strong>{{Apredizaje.titulo}}</strong></h4>
+          <p class="text-justify">
+            {{libro.autor}}
+          </p>
+          <a href="{% url 'Ninhos:pregunta' Apredizaje.id %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Cuestionario</a>
+        </div>
+
+        <div class="col-md-5">
+          <img src={{imagen01}} alt="">
+        </div>
+      </div>
+      <br><br>
+</div>
+
+{% endblock centro %}
+
+
+{% block scrts %}
+
+{% endblock scrts %}

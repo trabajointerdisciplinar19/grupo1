@@ -1,0 +1,12 @@
+2
+¿Cuál es el nombre del molinero?
+3
+Lucas
+Juan
+Pedro
+¿Que le entrega el molinero al segundo hijo?
+4
+Un burro
+Una bolsa con monedas de oro
+El molino
+Un gato

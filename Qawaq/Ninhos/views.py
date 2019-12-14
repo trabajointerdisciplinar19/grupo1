@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.contrib.auth import authenticate, login
 from .utils import *
 from django.contrib.auth.decorators import login_required, permission_required
-
+from .models import *
 
 def index(request):
     if request.user.is_authenticated:
@@ -61,4 +61,30 @@ def logout(request):
 
 @login_required
 def cuento(request, id):
-    pass
+    extra = {}
+    extra['username'] = request.user.get_username()
+    data = Material_Aprendizaje.objects.get(id=id)
+    extra['libro'] = Libro.objects.get(Material_Apren=data)
+    extra['Apredizaje'] = data
+    valor = (str(data.imagen)).split('/')
+    extra['imagen01'] = "../../"+valor[1]+'/'+valor[2]+'/'+valor[3]
+    return render(request,'PaginaIniciada/Cuentos/Cuentos.html',extra)
+
+@login_required
+def pregunta(request, id):
+    extra = {}
+    extra['username'] = request.user.get_username()
+    if request.method == 'POST':
+        cantidad_lineas = get_number_lineas(id)
+        respondido = []
+        for i in range(cantidad_lineas):
+            value = request.POST["Preg"+str(i)]
+            value = value[:len(value)-2]
+            respondido.append(value)
+        extra['puntuacion'] = comparar(id, respondido,cantidad_lineas)
+        agregar_puntuacion(request.user.id, id, extra['puntuacion'])
+        return render(request, 'PaginaIniciada/Cuentos/puntuacion.html',extra)
+
+    else:
+        extra['Preguntas'] = get_preguntas(id)
+        return render(request,'PaginaIniciada/Cuentos/Preguntas.html',extra)

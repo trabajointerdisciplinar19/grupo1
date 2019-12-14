@@ -1,58 +1,9 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Qawaq Profile</title>
-
-    <!-- Google Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
-
-    <!-- Bootstrap -->
-    	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style_pi.css' %}">
-    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
-
-  </head>
+  {% include "PaginaIniciada/header.html" %}
   <body>
-    <div class="header-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="user-menu">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-user"></i> Mi Perfil</a></li>
-                            <li><a href="{% url 'Ninhos:logout' %}"><i class="fa fa-user"></i> Logout</a></li>
-                            <li><p> Hola {{ username }} </p></li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div> <!-- End header area -->
-
-    <div class="site-branding-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="logo">
-                        <h1>Qawaq</a></h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End site branding area -->
+    {% include "PaginaIniciada/cabecera.html" %}
 
     <div class="mainmenu-area">
         <div class="container">
@@ -91,8 +42,8 @@
             </div>
             <br>
             <p>{{descripcion0}}</p>
-              # Crear links dinámicos, y ver parte de las preguntas, en autor 
-							<a class="caption button-radius" href="#"><span class="icon"></span>Leer ahora</a>
+              # Crear links dinámicos, y ver parte de las preguntas, en autor texto principal
+							<a class="caption button-radius" href="{% url 'Ninhos:cuento' id0 %}">><span class="icon"></span>Leer ahora</a>
 						</div>
 					</li>
           <li><img src={{imagen1}} alt="Slide">
@@ -105,7 +56,7 @@
               <br>
               <p>{{descripcion1}}</p>
 
-              <a class="caption button-radius" href="#"><span class="icon"></span>Leer ahora</a>
+              <a class="caption button-radius" href="{% url 'Ninhos:cuento' id1 %}"><span class="icon"></span>Leer ahora</a>
 						</div>
 					</li>
 					<li><img src={{imagen2}} alt="Slide">
@@ -118,7 +69,7 @@
               <br>
               <p>{{descripcion2}}</p>
 
-							<a class="caption button-radius" href="#"><span class="icon"></span>Leer ahora</a>
+							<a class="caption button-radius" href="{% url 'Ninhos:cuento' id2 %}"><span class="icon"></span>Leer ahora</a>
 						</div>
 					</li>
 					<li><img src={{imagen3}} alt="Slide">
@@ -131,7 +82,7 @@
               <br>
               <p>{{descripcion3}}</p>
 
-							<a class="caption button-radius" href="#"><span class="icon"></span>Leer ahora</a>
+							<a class="caption button-radius" href="{% url 'Ninhos:cuento' id3 %}"><span class="icon"></span>Leer ahora</a>
 						</div>
 					</li>
 				</ul>
@@ -170,62 +121,7 @@
             </div>
         </div>
     </div>
-    <div class="footer-top-area">
-        <div class="zigzag-bottom"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="footer-about-us">
-                        <h2><span>Qawaq</span></h2>
-                        <p>Es una plataforma diseñada para mejorar la comprensión lectora.</p>
-                        <div class="footer-social">
-                            <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="footer-menu">
-                        <h2 class="footer-wid-title">User Navigation </h2>
-                        <ul>
-                            <li><a href="#">Mi cuenta</a></li>
-                            <li><a href="#">Historial</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="footer-menu">
-                        <h2 class="footer-wid-title">Categorias</h2>
-                        <ul>
-                            <li><a href="#">Aventura</a></li>
-                            <li><a href="#">Fantasia</a></li>
-                            <li><a href="#">Infantil</a></li>
-
-                        </ul>
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-    </div> <!-- End footer top area -->
-
-    <div class="footer-bottom-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="copyright">
-                        <p>&copy; 2019 Qawaq. Derechos Reservados.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div> <!-- End footer bottom area -->
+    {% include "PaginaIniciada/footer.html" %}
 
     <!-- Latest jQuery form server -->
 	  <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>

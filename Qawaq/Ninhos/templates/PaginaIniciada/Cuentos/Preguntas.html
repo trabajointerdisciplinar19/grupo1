@@ -1,0 +1,30 @@
+{% extends "../base.html" %}
+{% block centro %}
+<div class="container">
+  <div class="card-body">
+					<form method="POST" >
+						{% csrf_token %}
+            {% for preg in Preguntas %}
+              <div class="form-group">
+                <label for=""><strong>{{preg.question}}</strong></label><br><br>
+                {% for altern in preg.alternativas %}
+                <div class="form-check">
+                  <input required type="radio" class="form-check-input" value = "{{altern}}" name="{{preg.id}}">
+                  <label class="form-check-label">{{altern}}</label>
+                </div>
+                <br>
+                {% endfor %}
+              </div>
+              <br>
+
+            {% endfor %}
+            <div class="form-group">
+              <input type="submit" value="Enviar Respuesta" class="btn btn-outline-danger btn-block">
+            </div>
+				</form>
+		</div>
+
+      <br><br>
+</div>
+
+{% endblock centro %}

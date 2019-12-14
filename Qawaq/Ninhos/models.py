@@ -32,7 +32,7 @@ class Material_Aprendizaje(models.Model):
 class Historial(models.Model):
     user = models.OneToOneField(Usuario,on_delete=models.PROTECT)
     material_a = models.OneToOneField(Material_Aprendizaje,on_delete=models.PROTECT)
-    resultado = models.DecimalField(max_digits = 2, decimal_places = 2)
+    resultado = models.PositiveIntegerField()
     fecha_realizada = models.DateField()
 
 
@@ -50,8 +50,8 @@ class Videos(models.Model):
 
 
 class Pregunta(models.Model):
-    Preguntas = models.FilePathField()
-    Respuestas = models.FilePathField()
+    Preguntas = models.FilePathField(path="Ninhos/static/Preguntas")
+    Respuestas = models.FilePathField(path="Ninhos/static/Respuestas")
     Evaluacion = models.OneToOneField(Material_Aprendizaje,on_delete=models.CASCADE)
 
 
